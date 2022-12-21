@@ -34,4 +34,4 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     steps:
     - name: Deploy
-      run: ssh ods-cicd-user@20.160.113.200
+      run: ssh -tt ods-cicd-user@20.160.113.200
