@@ -34,7 +34,7 @@ jobs:
     - name: Deploy to azure vm
       uses: appleboy/ssh-action@v0.1.6
       with:
-        host: 20.160.113.200
-        username: ods-cicd-user
-        password: RensIsCool1!
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        password: ${{ secrets.SSH_PASSWORD }}
         script: whoami
