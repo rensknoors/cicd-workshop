@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: [ 'main' ]
   workflow_dispatch:
-    branches: [ 'main' ]
 
 jobs:
 
@@ -34,4 +33,9 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     steps:
     - name: Deploy
-      run: ssh -tt ods-cicd-user@20.160.113.200
+      uses: appleboy/ssh-action@v0.1.6
+        with:
+          host: 20.160.113.200
+          username: ods-cicd-user
+          password: RensIsCool1!
+          script: whoami
