@@ -23,14 +23,15 @@ jobs:
     - name: Build
       run: go build
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
     - name: Test
       run: go test -v ./...
 
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Deploy
-  #     run:
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'development'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    steps:
+    - name: Deploy
+      run: ssh ods-cicd-user@20.160.113.200
